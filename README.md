@@ -1,256 +1,163 @@
-<a name="readme-top"></a>
+# Event-Driven Microservices System with Apache Kafka
 
-<!--
-*** Thanks for checking out the Project-Starter-Readme-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+A scalable event-driven microservices architecture that enables real-time order processing and inventory management using Apache Kafka for reliable message streaming and event handling.
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
+This project implements a distributed system of microservices that communicate asynchronously through Kafka events. The architecture consists of four core services - Order, Inventory, Payment and Notification - that work together to process customer orders while maintaining data consistency and system reliability.
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+The system leverages Apache Kafka's pub/sub messaging to decouple services and enable independent scaling. Key features include:
+- Event-driven architecture with Kafka for reliable message streaming
+- Containerized microservices using Docker and Docker Compose
+- Real-time order status updates and inventory management
+- Kafdrop UI for Kafka topic monitoring and management
+- Configurable services with environment-based settings
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/sanajitjana/Project-Starter-Readme-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+## Repository Structure
+```
+.
+├── docker-compose.yml          # Main Docker Compose configuration for all services
+├── kafka-infra/               # Kafka infrastructure setup
+│   └── docker-compose.yml     # Kafka and Zookeeper configuration
+├── order-service/             # Order processing service
+│   ├── src/                   # Source code for order management
+│   └── Dockerfile            # Container build instructions
+├── inventory-service/         # Inventory management service
+│   ├── src/                   # Source code for inventory tracking
+│   └── Dockerfile            # Container build instructions
+├── payment-service/           # Payment processing service
+│   └── src/                   # Source code for payment handling
+└── notification-service/      # Notification handling service
+    └── src/                   # Source code for notifications
+```
 
-  <h3 align="center">Project-Starter-Readme-Template</h3>
-
-  <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/sanajitjana/Project-Starter-Readme-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/sanajitjana/Project-Starter-Readme-Template">View Demo</a>
-    ·
-    <a href="https://github.com/sanajitjana/Project-Starter-Readme-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/sanajitjana/Project-Starter-Readme-Template/issues">Request Feature</a>
-  </p>
-</div>
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-- [![Next][next.js]][next-url]
-- [![React][react.js]][react-url]
-- [![Vue][vue.js]][vue-url]
-- [![Angular][angular.io]][angular-url]
-- [![Svelte][svelte.dev]][svelte-url]
-- [![Laravel][laravel.com]][laravel-url]
-- [![Bootstrap][bootstrap.com]][bootstrap-url]
-- [![JQuery][jquery.com]][jquery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
+## Usage Instructions
 ### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
+- Java Development Kit (JDK) 17 or later
+- Docker and Docker Compose
+- Maven 3.6.x or later
+- Git
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd <repository-name>
+```
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
-   ```
+2. Build the services:
+```bash
+# Build each service
+cd order-service && ./mvnw clean package
+cd ../inventory-service && ./mvnw clean package
+cd ../payment-service && ./mvnw clean package
+cd ../notification-service && ./mvnw clean package
+```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+3. Start the infrastructure:
+```bash
+docker-compose up -d
+```
 
-<!-- USAGE EXAMPLES -->
+### Quick Start
 
-## Usage
+1. Verify services are running:
+```bash
+docker-compose ps
+```
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+2. Access Kafdrop UI:
+- Open http://localhost:9000 in your browser
+- View Kafka topics and messages
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+3. Create a sample order:
+```bash
+curl -X POST http://localhost:8081/api/orders \
+  -H "Content-Type: application/json" \
+  -d '{"orderId":"123","userId":"user1","status":"PENDING"}'
+```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### More Detailed Examples
 
-<!-- ROADMAP -->
+1. Monitor order processing:
+```bash
+# Watch Kafka topics
+docker-compose logs -f kafka
 
-## Roadmap
+# Check inventory service logs
+docker-compose logs -f inventory-service
+```
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-  - [ ] Chinese
-  - [ ] Spanish
+2. Scale services:
+```bash
+# Scale inventory service
+docker-compose up -d --scale inventory-service=2
+```
 
-See the [open issues](https://github.com/sanajitjana/Project-Starter-Readme-Template/issues) for a full list of proposed features (and known issues).
+### Troubleshooting
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Common Issues:
 
-<!-- CONTRIBUTING -->
+1. Services fail to start
+- Check if Kafka is running: `docker-compose ps`
+- Verify ports are not in use: `netstat -an | grep PORT`
+- Review service logs: `docker-compose logs SERVICE_NAME`
 
-## Contributing
+2. Messages not being processed
+- Check Kafka topics in Kafdrop UI
+- Verify consumer group status
+- Review consumer service logs
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+3. Connection issues
+- Ensure all containers are on same network
+- Verify bootstrap server configuration
+- Check network connectivity between services
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+## Data Flow
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+The system processes orders through a series of event-driven interactions between services, maintaining data consistency through Kafka events.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+```ascii
+[Order Service] --> (order-created) --> [Kafka] --> [Inventory Service]
+                                        |
+                                        +--> [Payment Service]
+                                        |
+                                        +--> [Notification Service]
+```
 
-<!-- LICENSE -->
+Component Interactions:
+1. Order Service publishes order events to Kafka
+2. Inventory Service consumes order events and updates stock
+3. Payment Service processes payment for valid orders
+4. Notification Service sends updates to relevant parties
+5. All services communicate asynchronously through Kafka topics
+6. Each service maintains its own data store
+7. Kafdrop provides monitoring and management UI
 
-## License
+## Infrastructure
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+![Infrastructure diagram](./docs/infra.svg)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Kafka Infrastructure:
+- Zookeeper: Coordination service (port 2181)
+- Kafka Broker: Message broker (port 9092)
+- Kafdrop: Web UI for Kafka monitoring (port 9000)
 
-<!-- CONTACT -->
+Application Services:
+- Order Service: Port 8081
+- Inventory Service: Port 8082
+- Payment Service: Internal
+- Notification Service: Internal
 
-## Contact
+## Deployment
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Prerequisites:
+- Docker environment
+- Network access to container registry
+- Sufficient system resources
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-- [Choose an Open Source License](https://choosealicense.com)
-- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-- [Malven's Grid Cheatsheet](https://grid.malven.co/)
-- [Img Shields](https://shields.io)
-- [GitHub Pages](https://pages.github.com)
-- [Font Awesome](https://fontawesome.com)
-- [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[contributors-shield]: https://img.shields.io/github/contributors/sanajitjana/Project-Starter-Readme-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/sanajitjana/Project-Starter-Readme-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/sanajitjana/Project-Starter-Readme-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/sanajitjana/Project-Starter-Readme-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/sanajitjana/Project-Starter-Readme-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/sanajitjana/Project-Starter-Readme-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/sanajitjana/Project-Starter-Readme-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/sanajitjana/Project-Starter-Readme-Template/issues
-[license-shield]: https://img.shields.io/github/license/sanajitjana/Project-Starter-Readme-Template.svg?style=for-the-badge
-[license-url]: https://github.com/sanajitjana/Project-Starter-Readme-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/sanajitjana
-[product-screenshot]: images/screenshot.png
-[next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[next-url]: https://nextjs.org/
-[react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[react-url]: https://reactjs.org/
-[vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[vue-url]: https://vuejs.org/
-[angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[angular-url]: https://angular.io/
-[svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[svelte-url]: https://svelte.dev/
-[laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[laravel-url]: https://laravel.com
-[bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[bootstrap-url]: https://getbootstrap.com
-[jquery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[jquery-url]: https://jquery.com
+Deployment Steps:
+1. Configure environment variables
+2. Deploy Kafka infrastructure
+3. Deploy application services
+4. Verify service health
+5. Monitor system metrics
